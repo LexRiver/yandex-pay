@@ -81,7 +81,7 @@ export abstract class BaseService {
             'X-Request-Timeout': '20000',
             'X-Request-Attempt': '0',
         };
-        console.log('header=', result);
+        // console.log('header=', result);
         return result;
     }
     
