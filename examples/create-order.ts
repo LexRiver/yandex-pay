@@ -1,11 +1,13 @@
+import 'dotenv/config';
 import { YandexPayAPI } from '../src/YandexPayAPI.js';
+console.log('env=',process.env)
 
 // Sample code demonstrating how to create an order with Yandex Pay API
 const createOrder = async () => {
     try {
         // Initialize the API client
         const yandexPay = new YandexPayAPI({
-            apiKey: 'your-api-key', // Replace with your actual API key
+            apiKey: process.env.YANDEX_PAY_API_KEY ?? '<no-api-key>', // Replace with your actual API key
             sandbox: true // Use sandbox environment for testing
         });
         

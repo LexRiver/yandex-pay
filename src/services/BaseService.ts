@@ -74,13 +74,15 @@ export abstract class BaseService {
     protected getHeaders(): Record<string, string> {
         const requestId = this.generateRequestId();
         
-        return {
+        const result = {
             'Content-Type': 'application/json',
             'Authorization': `Api-Key ${this.apiKey}`,
             'X-Request-Id': requestId,
             'X-Request-Timeout': '20000',
             'X-Request-Attempt': '0',
         };
+        console.log('header=', result);
+        return result;
     }
     
     /**
