@@ -1,11 +1,5 @@
-import { OperationResponseData } from '../types/Operation.js';
-import {
-    CreateSubscriptionRequest,
-    CreateSubscriptionResponse,
-    RecurringPaymentRequest,
-    Subscription,
-    SubscriptionResponseData
-} from '../types/Subscription.js';
+import { CreateSubscriptionRequest, CreateSubscriptionResponse, RecurringPaymentRequest, Subscription, SubscriptionResponseData } from '../types/index.js';
+import { RecurSubscriptionResponse } from '../types/responses/RecurSubscriptionResponse.js';
 import { BaseService } from './BaseService.js';
 
 /**
@@ -13,7 +7,9 @@ import { BaseService } from './BaseService.js';
  */
 export class SubscriptionService extends BaseService {
     /**
-     * Creates a new subscription
+     * Request for subscription creation.
+     * 
+     * The request is used to create a subscription and and obtain a link to start it.
      * 
      * @param data Subscription data
      * @returns Created subscription data
@@ -23,17 +19,22 @@ export class SubscriptionService extends BaseService {
     }
     
     /**
-     * Makes a recurring payment for a subscription
+     * Request to debit a regular subscription fee.
+     * 
+     * The request is used to perform a direct debit from the account or card linked to the subscription. 
+     * To debit funds, pass the order ID, cart, debit amount, and ID of the initial order that was used at subscription creation.
      * 
      * @param data Recurring payment data
      * @returns Operation details
      */
-    async makeRecurringPayment(data: RecurringPaymentRequest): Promise<OperationResponseData> {
-        return this.post<OperationResponseData>('/v1/subscriptions/recur', data);
+    async makeRecurringPayment(data: RecurringPaymentRequest): Promise<RecurSubscriptionResponse> {
+        return this.post<RecurSubscriptionResponse>('/v1/subscriptions/recur', data);
     }
     
     /**
-     * Gets subscription details
+     * Request to obtain subscription details.
+     * 
+     * Returns the subscription ID and status and the linked payment method.
      * 
      * @param subscriptionId Subscription ID
      * @param checkCardActive Whether to check if the card is active

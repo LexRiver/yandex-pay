@@ -1,4 +1,4 @@
-import { Operation } from '../types/Operation.js';
+import { OrderResponseOperation } from '../types/responses/OrderResponseOperation.js';
 import { BaseService } from './BaseService.js';
 
 /**
@@ -6,15 +6,13 @@ import { BaseService } from './BaseService.js';
  */
 export class OperationService extends BaseService {
     /**
-     * Gets operations for an order
+     * Request to get details about the payment authorization, debiting, refund, or cancellation operations.
      * 
-     * @param orderId Order ID
-     * @returns List of operations
+     * @param externalOperationId External operation ID
+     * @returns Operation details
      */
-    async getOperations(orderId: string): Promise<Operation[]> {
-        const response = await this.get<{ operations: Operation[] }>('/v1/operations', { 
-            orderId 
-        });
+    async getOperation(externalOperationId: string): Promise<OrderResponseOperation[]> {
+        const response = await this.get<{ operations: OrderResponseOperation[] }>(`/v1/operations/${externalOperationId}`);
         
         return response.operations;
     }

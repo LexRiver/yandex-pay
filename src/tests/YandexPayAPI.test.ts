@@ -46,6 +46,7 @@ describe('YandexPayAPI', () => {
             
             const result = await api.orders.createOrder({
                 cart: {
+                    externalId: 'test-cart-id',
                     items: [{
                         productId: 'test-product',
                         title: 'Test Product',

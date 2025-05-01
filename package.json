@@ -1,6 +1,6 @@
 {
     "name": "@lexriver/yandex-pay",
-    "version": "1.0.2",
+    "version": "1.1.0",
     "type": "module",
     "main": "./dist/index.js",
     "types": "./dist/index.d.ts",
@@ -21,7 +21,11 @@
         "yandex-pay",
         "payments",
         "api-client",
-        "ecommerce"
+        "ecommerce",
+        "yandexpay",
+        "яндекс-пэй",
+        "яндекс пэй",
+        "я пей"
     ],
     "author": "LexRiver <LexRiver@gmail.com> (https://github.com/LexRiver/)",
     "license": "ISC",
