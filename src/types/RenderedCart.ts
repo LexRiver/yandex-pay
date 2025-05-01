@@ -13,5 +13,5 @@ export interface RenderedCart {
     /**
      * Cart ID passed by the merchant
      */
-    externalId: string;
+    externalId?: string;
 }
