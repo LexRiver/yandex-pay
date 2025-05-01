@@ -11,5 +11,5 @@ export interface ApiConfig {
      * Use sandbox environment
      * @default false
      */
-    sandbox?: boolean;
+    isSandbox?: boolean;
 } 

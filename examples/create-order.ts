@@ -9,7 +9,7 @@ const createOrder = async () => {
         // Initialize the API client
         const yandexPay = new YandexPayAPI({
             apiKey: process.env.YANDEX_PAY_API_KEY ?? '<no-api-key>', // Replace with your actual API key
-            sandbox: true // Use sandbox environment for testing
+            isSandbox: true // Use sandbox environment for testing
         });
         
         // Create an order

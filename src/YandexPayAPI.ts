@@ -22,7 +22,7 @@ export class YandexPayAPI {
      */
     constructor(config: ApiConfig) {
         this.apiKey = config.apiKey;
-        this.isSandbox = config.sandbox || false;
+        this.isSandbox = config.isSandbox || false;
         this.baseUrl = this.isSandbox 
             ? 'https://sandbox.pay.yandex.ru/api/merchant'
             : 'https://pay.yandex.ru/api/merchant';

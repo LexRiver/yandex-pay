@@ -14,7 +14,7 @@ describe('YandexPayAPI', () => {
         // Create a new API instance with a test API key
         api = new YandexPayAPI({
             apiKey: 'test-api-key',
-            sandbox: true
+            isSandbox: true
         });
         
         // Mock successful response

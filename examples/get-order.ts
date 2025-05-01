@@ -7,7 +7,7 @@ const getOrderExample = async () => {
         // Initialize the API client
         const yandexPay = new YandexPayAPI({
             apiKey: process.env.YANDEX_PAY_API_KEY ?? '<no-api-key>', // Replace with your actual API key
-            sandbox: true // Use sandbox environment for testing
+            isSandbox: true // Use sandbox environment for testing
         });
         
         // Replace with the actual order ID you want to retrieve
@@ -22,6 +22,24 @@ const getOrderExample = async () => {
         console.log(orderDetails.order.paymentUrl)
         console.log(orderDetails.order.orderId)
         console.log(orderDetails.order.orderAmount)
+
+/* before payment
+
+PENDING
+https://sandbox.pay.ya.ru/l/Ucxnhx
+order-001
+100.00
+*/        
+
+/* after payment
+
+CAPTURED
+https://sandbox.pay.ya.ru/l/Ucxnhx
+order-001
+100.00
+*/
+
+
         
     } catch (error: any) {
         console.error(`Error getting order ${error?.config?.url}:`, error?.response?.data || error.message);
