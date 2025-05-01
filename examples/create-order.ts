@@ -1,6 +1,7 @@
 import 'dotenv/config';
 import { YandexPayAPI } from '../src/YandexPayAPI.js';
-console.log('env=',process.env)
+import { EnumAllowedPaymentMethods } from '../src/enums/EnumAllowedPaymentMethods.js';
+// console.log('env=',process.env)
 
 // Sample code demonstrating how to create an order with Yandex Pay API
 const createOrder = async () => {
@@ -14,6 +15,7 @@ const createOrder = async () => {
         // Create an order
         const order = await yandexPay.orders.createOrder({
             cart: {
+                externalId: 'test-cart-id',
                 items: [
                     {
                         productId: 'product-1',
@@ -28,17 +30,16 @@ const createOrder = async () => {
                     amount: '100.00'
                 }
             },
-            orderId: `order-${Date.now()}`, // Generate a unique order ID
+            orderId: `order-001`, // Generate a unique order ID
             currencyCode: 'RUB',
             redirectUrls: {
                 onSuccess: 'https://your-site.com/success',
                 onError: 'https://your-site.com/error'
             },
-            availablePaymentMethods: ['CARD']
+            availablePaymentMethods: [EnumAllowedPaymentMethods.Card]
         });
         
         console.log('Order created successfully');
-        console.log(`Order ID: ${order.orderId}`);
         console.log(`Payment URL: ${order.paymentUrl}`);
         
         // In a real application, you would redirect the user to the payment URL
