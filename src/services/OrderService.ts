@@ -1,3 +1,4 @@
+import { RenderedCart } from '../types/RenderedCart.js';
 import { CancelOrderRequest } from '../types/requests/CancelOrderRequest.js';
 import { CaptureOrderRequest } from '../types/requests/CaptureOrderRequest.js';
 import { CreateOrderRequest } from '../types/requests/CreateOrderRequest.js';
@@ -22,7 +23,19 @@ export class OrderService extends BaseService {
      * @returns Created order data
      */
     async createOrder(data: CreateOrderRequest): Promise<CreateOrderResponse> {
+        this.checkForProductIdDuplicates(data.cart)
         return this.post<CreateOrderResponse>('/v1/orders', data);
+    }
+
+    protected checkForProductIdDuplicates(cart: RenderedCart): void {
+        const seenProductIds = new Set<string>();
+        
+        for (const item of cart.items) {
+            if (seenProductIds.has(item.productId)) {
+                throw new Error(`Duplicate productId found: ${item.productId}. Each productId must be unique.`);
+            }
+            seenProductIds.add(item.productId);
+        }
     }
 
     /**
