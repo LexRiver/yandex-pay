@@ -2,6 +2,10 @@
 
 A TypeScript/JavaScript client for the Yandex Pay API that helps you easily integrate Yandex Pay into your Node.js applications.
 
+## Documentation
+
+This package is based on the [official Yandex Pay API documentation](https://pay.yandex.ru/docs/en/custom/backend/yandex-pay-api/).
+
 ## Installation
 
 ```bash
@@ -151,11 +155,11 @@ The package provides a type-safe interface to the Yandex Pay API organized into 
 - `refundOrderV2(orderId, data)` - Refund an order (V2 API)
 - `captureOrder(orderId, data)` - Capture (confirm) an order payment
 - `rollbackOrder(orderId)` - Rollback (void) an order payment
-- `submitOrder(orderId)` - Submit an order for processing
+- `submitOrder(orderId, data)` - Submit an order for processing
 
 ### OperationService
 
-- `getOperations(orderId)` - Get operations for an order
+- `getOperation(externalOperationId)` - Get details about a specific operation
 
 ### SubscriptionService
 
