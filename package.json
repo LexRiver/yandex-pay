@@ -1,6 +1,6 @@
 {
     "name": "@lexriver/yandex-pay",
-    "version": "1.1.5",
+    "version": "1.1.6",
     "type": "module",
     "main": "./dist/cjs/index.js",
     "module": "./dist/esm/index.js",
@@ -20,7 +20,7 @@
     "scripts": {
         "pretest": "pnpm build",
         "test": "vitest run",
-        "build": "tsc -p tsconfig.esm.json && tsc -p tsconfig.cjs.json",
+        "build": "tsc -p tsconfig.esm.json && tsc -p tsconfig.cjs.json && copy dist-cjs-package.json dist\\cjs\\package.json",
         "test:watch": "vitest"
     },
     "description": "A TypeScript client for Yandex Pay API to integrate payment processing in your Node.js applications",
